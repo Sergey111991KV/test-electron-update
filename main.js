@@ -15,7 +15,6 @@ function createWindow () {
   mainWindow.once('ready-to-show', () => {
     autoUpdater.checkForUpdatesAndNotify();
   });
-
 }
 
 app.whenReady().then(() => {
@@ -32,6 +31,7 @@ app.on('window-all-closed', function () {
 })
 
 ipcMain.on('app_version', (event) => {
+  console.log(autoUpdater)
   event.sender.send('app_version', { version: app.getVersion() });
 });
 
